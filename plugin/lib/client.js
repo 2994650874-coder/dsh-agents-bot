@@ -22,7 +22,7 @@ window.__ModuleLoader__.load({
     };
     var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-    // plugin/src/client/index.tsx
+    // grokbot/plugin/src/client/index.tsx
     var index_exports = {};
     __export(index_exports, {
       apply: () => apply,
@@ -30,13 +30,13 @@ window.__ModuleLoader__.load({
     });
     module.exports = __toCommonJS(index_exports);
 
-    // plugin/src/client/AvatarPanel.tsx
+    // grokbot/plugin/src/client/AvatarPanel.tsx
     var import_react6 = require("react");
 
-    // plugin/src/client/Bot.tsx
+    // grokbot/plugin/src/client/Bot.tsx
     var import_react = require("react");
 
-    // plugin/src/bot/math.ts
+    // grokbot/plugin/src/bot/math.ts
     var TAU = Math.PI * 2;
     var clamp = (v, lo = 0, hi = 1) => v < lo ? lo : v > hi ? hi : v;
     var lerp = (a, b, t) => a + (b - a) * t;
@@ -60,7 +60,7 @@ window.__ModuleLoader__.load({
     }
     var r2 = (v) => Math.round(v * 100) / 100;
 
-    // plugin/src/bot/decor.ts
+    // grokbot/plugin/src/bot/decor.ts
     function wheel(hue, s = 0.55, l = 0.62) {
       const h = (hue % 360 + 360) % 360;
       const c = (1 - Math.abs(2 * l - 1)) * s;
@@ -292,7 +292,7 @@ window.__ModuleLoader__.load({
     var NOTIF_POP = 1.14;
     var NOTIF_MARGIN = 0.054;
 
-    // plugin/src/bot/face.ts
+    // grokbot/plugin/src/bot/face.ts
     var EYE_SPLIT = 15.46;
     var EYE_W = 0.186;
     var EYE_H = 0.412;
@@ -378,7 +378,7 @@ window.__ModuleLoader__.load({
       return 0.06 + 0.94 * clamp(lid);
     }
 
-    // plugin/src/bot/expressions.ts
+    // grokbot/plugin/src/bot/expressions.ts
     var eye = (w, h, tilt = 0, open = 1) => ({ w, h, tilt, open });
     var pair = (w, h, tilt = 0, open = 1) => [
       eye(w, h, tilt, open),
@@ -515,7 +515,7 @@ window.__ModuleLoader__.load({
       };
     }
 
-    // plugin/src/bot/profiles.ts
+    // grokbot/plugin/src/bot/profiles.ts
     var PROFILE_SAMPLES = 64;
     var PROFILES = {
       // oeuf : meme hauteur que la boule, retreci en largeur
@@ -529,7 +529,7 @@ window.__ModuleLoader__.load({
       triangle: [0.7819, 0.8211, 0.8747, 0.944, 1.0223, 1.096, 1.1401, 1.134, 1.0808, 1.0047, 0.9265, 0.8603, 0.8104, 0.773, 0.745, 0.7273, 0.7151, 0.7118, 0.7148, 0.7245, 0.7427, 0.768, 0.8037, 0.8518, 0.9148, 0.9876, 1.0583, 1.1073, 1.1109, 1.0667, 0.994, 0.9164, 0.8482, 0.7948, 0.7555, 0.7261, 0.7056, 0.6925, 0.6859, 0.6869, 0.6938, 0.7084, 0.7305, 0.7615, 0.804, 0.8595, 0.9311, 1.0092, 1.0791, 1.1171, 1.1054, 1.0501, 0.9779, 0.905, 0.845, 0.799, 0.7656, 0.7413, 0.7258, 0.716, 0.7146, 0.7204, 0.733, 0.7528]
     };
 
-    // plugin/src/bot/shape.ts
+    // grokbot/plugin/src/bot/shape.ts
     var ANGLES = Array.from({ length: PROFILE_SAMPLES }, (_, i) => i / PROFILE_SAMPLES * TAU);
     var COS = ANGLES.map(Math.cos);
     var SIN = ANGLES.map(Math.sin);
@@ -725,7 +725,7 @@ window.__ModuleLoader__.load({
       return `M${r2(-hw)} ${r2(-hh + r)}A${r2(r)} ${r2(r)} 0 0 1 ${r2(-hw + r)} ${r2(-hh)}L${r2(hw - r)} ${r2(-hh)}A${r2(r)} ${r2(r)} 0 0 1 ${r2(hw)} ${r2(-hh + r)}L${r2(hw)} ${r2(hh - r)}A${r2(r)} ${r2(r)} 0 0 1 ${r2(hw - r)} ${r2(hh)}L${r2(-hw + r)} ${r2(hh)}A${r2(r)} ${r2(r)} 0 0 1 ${r2(-hw)} ${r2(hh - r)}Z`;
     }
 
-    // plugin/src/bot/skins.ts
+    // grokbot/plugin/src/bot/skins.ts
     function normalize(radii, max = 1) {
       const peak = Math.max(...radii);
       if (peak <= 0) return radii;
@@ -816,7 +816,7 @@ window.__ModuleLoader__.load({
       return `#${c.map((x) => x.toString(16).padStart(2, "0")).join("")}`;
     }
 
-    // plugin/src/bot/overlay.ts
+    // grokbot/plugin/src/bot/overlay.ts
     var REF_R = 114.2705;
     var DECOR_R = {
       /** `paintOrbit` : `Mt = 52 * y1e(ze)` — mais y1e est l'easing d'entree, pas
@@ -1303,7 +1303,7 @@ window.__ModuleLoader__.load({
       return out;
     }
 
-    // plugin/src/bot/states.ts
+    // grokbot/plugin/src/bot/states.ts
     var WAKE_SHAKE_START = 1.05;
     var WAKE_SHAKE_END = 2.55;
     var WAKE_BURST_AT = WAKE_SHAKE_START + 0.3;
@@ -2296,7 +2296,7 @@ window.__ModuleLoader__.load({
     ];
     var STATE_BY_ID = new Map(STATES.map((s) => [s.id, s]));
 
-    // plugin/src/bot/eyefit.ts
+    // grokbot/plugin/src/bot/eyefit.ts
     var R = 100;
     var DERIVE_YAW = 5.5 + 1.6;
     var DERIVE_PITCH = 4.2 + 1.3;
@@ -2500,7 +2500,7 @@ window.__ModuleLoader__.load({
       return par.get(clef(state2, expr)) ?? par.get(clef(state2, null)) ?? NUL;
     }
 
-    // plugin/src/bot/mirror.ts
+    // grokbot/plugin/src/bot/mirror.ts
     function mirrorPose(pose) {
       const n = pose.sil.radii.length;
       if (n % 2 !== 0) throw new Error("horizontal reflection requires an even radial profile");
@@ -2527,7 +2527,7 @@ window.__ModuleLoader__.load({
       };
     }
 
-    // plugin/src/bot/engine.ts
+    // grokbot/plugin/src/bot/engine.ts
     var NO_LOOK = { yaw: 0, pitch: 0, mix: 0, spin: 0, wander: 1 };
     var lerpLook = (a, b, t) => ({
       yaw: lerp(a.yaw, b.yaw, t),
@@ -3004,11 +3004,11 @@ window.__ModuleLoader__.load({
       }
     };
 
-    // plugin/src/bot/repere.ts
+    // grokbot/plugin/src/bot/repere.ts
     var RAYON = 100;
     var DEMI_VIEWBOX = 158;
 
-    // plugin/src/client/look.ts
+    // grokbot/plugin/src/client/look.ts
     var DEFAULT_LOOK = {
       shape: DEFAULT_SHAPE,
       color: DEFAULT_COLOR,
@@ -3187,7 +3187,7 @@ window.__ModuleLoader__.load({
       return EXPRESSIONS.find((e) => e.id === id) ?? null;
     }
 
-    // plugin/src/client/activities.ts
+    // grokbot/plugin/src/client/activities.ts
     var ACTIVITY_PRESENTATION = {
       idle: { label: "空闲", color: "#8db6a0" },
       thinking: { label: "思考中", color: "#5aa9e6" },
@@ -3375,7 +3375,7 @@ window.__ModuleLoader__.load({
       { id: "comet", label: "跑命令" }
     ];
 
-    // plugin/src/client/rotation.ts
+    // grokbot/plugin/src/client/rotation.ts
     var LABEL = new Map(ANIMATION_OPTIONS.map((o) => [o.id, o.label]));
     function playLengthOf(state2) {
       const def = STATE_BY_ID.get(state2);
@@ -3415,7 +3415,7 @@ window.__ModuleLoader__.load({
       return rotation2.map((r) => `${LABEL.get(r.state) ?? STATE_BY_ID.get(r.state)?.id ?? r.state} ×${r.plays}`).join(" → ");
     }
 
-    // plugin/src/client/sharedFrameClock.ts
+    // grokbot/plugin/src/client/sharedFrameClock.ts
     var groups = /* @__PURE__ */ new Map();
     function groupFor(key) {
       let group = groups.get(key);
@@ -3515,7 +3515,7 @@ window.__ModuleLoader__.load({
       };
     }
 
-    // plugin/src/client/Bot.tsx
+    // grokbot/plugin/src/client/Bot.tsx
     var import_jsx_runtime = require("react/jsx-runtime");
     var VB = DEMI_VIEWBOX;
     var R2 = RAYON;
@@ -3866,7 +3866,7 @@ window.__ModuleLoader__.load({
       );
     }
 
-    // plugin/src/client/mainOverlayMode.ts
+    // grokbot/plugin/src/client/mainOverlayMode.ts
     var import_react2 = require("react");
     var current = { place: "sidebar", origin: null };
     var navigate;
@@ -3913,10 +3913,10 @@ window.__ModuleLoader__.load({
       return true;
     }
 
-    // plugin/src/client/IsolatedGrid.tsx
+    // grokbot/plugin/src/client/IsolatedGrid.tsx
     var import_react3 = require("react");
 
-    // plugin/src/isolation/protocol.mjs
+    // grokbot/plugin/src/isolation/protocol.mjs
     var ACTIVITY = Object.freeze(["idle", "thinking", "reading", "searching", "running", "writing", "compacting", "background", "waiting", "done", "error", "spawning", "sleep"]);
     var ANIMATION = Object.freeze(["idle", "thinking", "wink", "search", "wide", "alert", "notify", "exclaim", "bounce", "hexagon", "play", "orbit", "radar", "progress", "celebrate", "loading", "waking", "sleeping", "sending", "receiving", "uploading", "burst", "comet"]);
     var SHAPE = /* @__PURE__ */ new Set(["cercle", "galet", "squircle", "capsule", "triangle", "hexagone", "nuage", "goutte", "bouclier", "dome", "arche", "cylindre", "gemme", "cristal", "oeuf"]);
@@ -4034,7 +4034,7 @@ window.__ModuleLoader__.load({
       } };
     }
 
-    // plugin/src/client/canvasColor.ts
+    // grokbot/plugin/src/client/canvasColor.ts
     function labelColorForCanvas(hex) {
       const linear = [1, 3, 5].map((at) => Number.parseInt(hex.slice(at, at + 2), 16) / 255).map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
       return linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722 > 0.18 ? "#171717" : "#ffffff";
@@ -4054,7 +4054,7 @@ window.__ModuleLoader__.load({
       return "#" + out.map((value) => value.toString(16).padStart(2, "0")).join("");
     }
 
-    // plugin/src/client/IsolatedGrid.tsx
+    // grokbot/plugin/src/client/IsolatedGrid.tsx
     var import_jsx_runtime2 = require("react/jsx-runtime");
     var CHILD_ORIGIN = "http://127.0.0.1:49383";
     var PARENT_ORIGIN = true ? "dsh-app://app" : "dsh-app://app";
@@ -4110,7 +4110,7 @@ window.__ModuleLoader__.load({
       }, [snapshot2, onUnavailable]);
       (0, import_react3.useEffect)(() => {
         const target = frame.current;
-        const capability = true ? "5b25e2c55d48f20fc4d27a324142e357b1bfea40964c109859e3f8c91e9fcb7e" : "";
+        const capability = true ? "c1625532a4f71e1cfc34a97d425fd8b2915a4314fcd6df8be9c2eb9de53a7e05" : "";
         if (!target || window.location.origin !== PARENT_ORIGIN || !/^[a-f0-9]{64}$/.test(capability)) {
           onUnavailable("独立画面入口未通过验证");
           return;
@@ -4251,7 +4251,7 @@ window.__ModuleLoader__.load({
       ] });
     }
 
-    // plugin/src/client/IsolationControls.tsx
+    // grokbot/plugin/src/client/IsolationControls.tsx
     var import_jsx_runtime3 = require("react/jsx-runtime");
     function IsolationControls({ shownIds, displayNames, portraitSizes, cols, rows, customizer, editTarget, onEdit, onRemove }) {
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { "aria-label": "隔离画面操作", style: {
@@ -4301,7 +4301,7 @@ window.__ModuleLoader__.load({
       }) });
     }
 
-    // plugin/src/client/bridgeSnapshot.ts
+    // grokbot/plugin/src/client/bridgeSnapshot.ts
     var OPAQUE = /^[a-f0-9]{32}$/;
     function snapshotForChild(input) {
       const { shownIds, agentById, kidsCount, tokenFor, lookFor, botSize, customizer, editTarget, fps, dwellMs, rotation: rotation2, cols, rows } = input;
@@ -4335,7 +4335,7 @@ window.__ModuleLoader__.load({
       return { rows: safeRows, ui: { fps, dwellMs, rotation: safeRotation, cols, rows } };
     }
 
-    // plugin/src/client/derive.ts
+    // grokbot/plugin/src/client/derive.ts
     var ERROR_WINDOW_MS = 15e3;
     var SPAWN_WINDOW_MS = 6e3;
     function isChildRow(row2) {
@@ -4366,7 +4366,7 @@ window.__ModuleLoader__.load({
       return "idle";
     }
 
-    // plugin/src/client/agents.ts
+    // grokbot/plugin/src/client/agents.ts
     function activeSessionOf(list) {
       const snapshot2 = list;
       if (!snapshot2?.byId || !Array.isArray(snapshot2.ids)) return void 0;
@@ -4510,13 +4510,13 @@ window.__ModuleLoader__.load({
       return n;
     }
 
-    // plugin/src/client/Picker.tsx
+    // grokbot/plugin/src/client/Picker.tsx
     var import_react5 = require("react");
 
-    // plugin/src/client/store.ts
+    // grokbot/plugin/src/client/store.ts
     var import_react4 = require("react");
 
-    // plugin/src/client/monitorQueue.ts
+    // grokbot/plugin/src/client/monitorQueue.ts
     var bounded2 = (n) => Math.max(1, Math.min(9, Number.isFinite(n) ? Math.trunc(n) : 9));
     var distinct = (ids) => [...new Set(ids.filter((id) => typeof id === "string" && id.length > 0))];
     function seedMonitorQueue(picked, activeId, max = 9) {
@@ -4555,7 +4555,7 @@ window.__ModuleLoader__.load({
       return { order: activeId ? [activeId] : [], capacity: 1 };
     }
 
-    // plugin/src/client/store.ts
+    // grokbot/plugin/src/client/store.ts
     var ANIMATION_IDS = new Set(ANIMATION_OPTIONS.map((o) => o.id));
     var MAX_MONITORED = 9;
     function gridOf(n, orientation = "landscape") {
@@ -4894,6 +4894,30 @@ window.__ModuleLoader__.load({
       automaticPresetSlots.set(sessionId, position);
       return position;
     }
+    function syncPresetSlots(shownIds) {
+      if (shownIds.length === 0) return new Map(automaticPresetSlots);
+      const kept = /* @__PURE__ */ new Map();
+      for (const [id, position] of automaticPresetSlots) {
+        if (shownIds.includes(id)) kept.set(id, position);
+      }
+      automaticPresetSlots.clear();
+      const taken = /* @__PURE__ */ new Set();
+      for (const id of shownIds) {
+        const known = kept.get(id);
+        if (known !== void 0 && !taken.has(known)) {
+          automaticPresetSlots.set(id, known);
+          taken.add(known);
+        }
+      }
+      for (const id of shownIds) {
+        if (automaticPresetSlots.has(id)) continue;
+        let position = Math.max(0, shownIds.indexOf(id));
+        while (taken.has(position)) position += 1;
+        automaticPresetSlots.set(id, position);
+        taken.add(position);
+      }
+      return new Map(automaticPresetSlots);
+    }
     function currentMonitorQueue() {
       return monitorQueue ?? seedMonitorQueue(state.picked, activeMonitorId, MAX_MONITORED);
     }
@@ -4949,7 +4973,7 @@ window.__ModuleLoader__.load({
       return (0, import_react4.useSyncExternalStore)(subscribe2, () => state[key]);
     }
 
-    // plugin/src/client/Picker.tsx
+    // grokbot/plugin/src/client/Picker.tsx
     var import_jsx_runtime4 = require("react/jsx-runtime");
     function workspaceLabel(w) {
       const t = w.title?.trim();
@@ -5078,7 +5102,7 @@ window.__ModuleLoader__.load({
       ] });
     }
 
-    // plugin/src/client/AvatarPanel.tsx
+    // grokbot/plugin/src/client/AvatarPanel.tsx
     var import_jsx_runtime5 = require("react/jsx-runtime");
     function AvatarPanel(props) {
       const tabInfo = props.useTabInfo?.();
@@ -5164,6 +5188,7 @@ window.__ModuleLoader__.load({
       );
       const shownIds = (0, import_react6.useMemo)(() => activeId ? monitoredList(activeId, picked, unavailable) : [], [activeId, picked, unavailable]);
       (0, import_react6.useLayoutEffect)(() => visitMonitored(activeId, unavailable), [activeId, unavailable]);
+      const presetSlots = (0, import_react6.useMemo)(() => syncPresetSlots(shownIds), [shownIds]);
       const [now, setNow] = (0, import_react6.useState)(() => Date.now());
       (0, import_react6.useEffect)(() => {
         const id = window.setInterval(() => setNow(Date.now()), 5e3);
@@ -5176,8 +5201,8 @@ window.__ModuleLoader__.load({
       const agentById = (0, import_react6.useMemo)(() => new Map(agents.map((a) => [a.id, a])), [agents]);
       const count = shownIds.length;
       const lookFor = (0, import_react6.useCallback)(
-        (id) => looks[id] ?? presetLookAt(presetPositionFor(id, shownIds.indexOf(id)), look2, preset),
-        [looks, look2, shownIds, preset]
+        (id) => looks[id] ?? presetLookAt(presetSlots.get(id) ?? presetPositionFor(id, shownIds.indexOf(id)), look2, preset),
+        [looks, look2, shownIds, presetSlots, preset]
       );
       const [orientation, setOrientation] = (0, import_react6.useState)("landscape");
       const grid = (0, import_react6.useMemo)(() => gridOf(count, orientation), [count, orientation]);
@@ -5509,7 +5534,7 @@ window.__ModuleLoader__.load({
       );
     }
 
-    // plugin/src/client/GuideIcon.tsx
+    // grokbot/plugin/src/client/GuideIcon.tsx
     var import_jsx_runtime6 = require("react/jsx-runtime");
     var FILL = 1.58;
     var ICON_LOOK = { ...DEFAULT_LOOK, expression: "attentif" };
@@ -5552,10 +5577,10 @@ window.__ModuleLoader__.load({
       );
     }
 
-    // plugin/src/client/MainOverlayG2.tsx
+    // grokbot/plugin/src/client/MainOverlayG2.tsx
     var import_react9 = require("react");
 
-    // plugin/src/client/overlaySessionData.ts
+    // grokbot/plugin/src/client/overlaySessionData.ts
     var EMPTY = { ready: false, otherCount: 0, otherChildCount: 0, pending: [] };
     function deriveOverlaySessionData(list, statuses, picked, archivedIds, now, sleepMinutes) {
       if (!list || list.phase !== "ready" || !Array.isArray(list.ids) || !list.byId || !statuses || typeof statuses.get !== "function") return EMPTY;
@@ -5578,7 +5603,7 @@ window.__ModuleLoader__.load({
       };
     }
 
-    // plugin/src/client/OverlayBotMeta.tsx
+    // grokbot/plugin/src/client/OverlayBotMeta.tsx
     var import_react7 = require("react");
     var import_jsx_runtime7 = require("react/jsx-runtime");
     var base2 = {
@@ -5697,7 +5722,7 @@ window.__ModuleLoader__.load({
       ] });
     }
 
-    // plugin/src/client/MainOverlayG1.tsx
+    // grokbot/plugin/src/client/MainOverlayG1.tsx
     var import_react8 = require("react");
     var import_jsx_runtime8 = require("react/jsx-runtime");
     var SIZE = 96;
@@ -5713,7 +5738,7 @@ window.__ModuleLoader__.load({
       };
     }
 
-    // plugin/src/client/MainOverlayG2.tsx
+    // grokbot/plugin/src/client/MainOverlayG2.tsx
     var import_jsx_runtime9 = require("react/jsx-runtime");
     var POSITION_KEY = "dsh-agents-bot:main-position-v1";
     var SECONDARY_RATIO = 0.6;
@@ -5985,7 +6010,7 @@ window.__ModuleLoader__.load({
       ] });
     }
 
-    // plugin/src/client/Settings.tsx
+    // grokbot/plugin/src/client/Settings.tsx
     var import_react10 = require("react");
     var import_jsx_runtime10 = require("react/jsx-runtime");
     var ANIMATION_LABEL = new Map(ANIMATION_OPTIONS.map((o) => [o.id, o.label]));
@@ -6489,7 +6514,7 @@ window.__ModuleLoader__.load({
       ] });
     }
 
-    // plugin/src/client/style.ts
+    // grokbot/plugin/src/client/style.ts
     var STYLE = `
     /* ══ 右栏面板 ══════════════════════════════════════════════════════
        宿主给正文的容器（.tabBody）是 height:100%;display:flex;flex-direction:column。
@@ -7001,7 +7026,7 @@ window.__ModuleLoader__.load({
     }
     `;
 
-    // plugin/src/client/index.tsx
+    // grokbot/plugin/src/client/index.tsx
     var import_jsx_runtime11 = require("react/jsx-runtime");
     var TAB_ID = "dsh-agents-bot";
     var TAB_KIND = "agentsBot";

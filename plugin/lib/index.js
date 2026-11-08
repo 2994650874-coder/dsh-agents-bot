@@ -1,4 +1,4 @@
-// plugin/src/host/isolationStatic.ts
+// grokbot/plugin/src/host/isolationStatic.ts
 import { createServer } from "node:http";
 import { readFileSync } from "node:fs";
 import { resolve, sep } from "node:path";
@@ -70,7 +70,7 @@ function registerIsolationStatic(ctx, options = {}) {
   }, "offscreen static loopback lifecycle");
 }
 
-// plugin/src/host/index.ts
+// grokbot/plugin/src/host/index.ts
 var KEY = "agentsBot";
 var STATE_VERSION = 2;
 function shape(check, what) {
