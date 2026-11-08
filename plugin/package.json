@@ -1,0 +1,48 @@
+{
+  "name": "dsh-agents-bot",
+  "version": "0.3.17",
+  "description": "活动 AI 头像：以 SVG 显示 agent / subagent 实时状态；在 DSH 右侧栏跨站隔离监视多会话，或切换到主窗口双 Bot。Host 提供工具级活动投影，客户端按可配置的动画轮播呈现。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "avatar",
+    "agent",
+    "animation",
+    "svg",
+    "session-projection"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE-bloub-MIT.txt"
+  ],
+  "scripts": {
+    "build": "node ../tools/build.mjs",
+    "test": "node ../tools/build-test.mjs && node ../tools/build-panel.mjs && node ../tools/build-settings.mjs && node test/smoke-host.cjs && node test/smoke-client.cjs && node test/smoke-rotation.cjs && node test/smoke-rotation-component.mjs && node test/smoke-look.cjs && node test/smoke-tail.cjs && node test/smoke-engine.cjs && node test/smoke-morph.cjs && node test/smoke-overlay.cjs && node test/smoke-loop.cjs && node test/smoke-turn92.cjs && node test/verify-projection.cjs && node test/smoke-settings-layout.mjs && node test/smoke-appearance-grid.mjs && node test/small-ball-family.cjs && node test/small-ball-external-visibility.cjs && node test/proportional-external-preview.cjs && node test/activity-presentations.cjs && node test/session-selection.cjs && node test/state-catalog.cjs && node --test test/isolation-snapshot.test.mjs && node --test test/monitor-queue.test.mjs && node --test test/shared-frame-clock.test.mjs"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ],
+      "platform": "web"
+    }
+  }
+}

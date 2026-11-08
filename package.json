@@ -1,0 +1,23 @@
+{
+  "name": "grokbot-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "description": "构建与验证工作区（不是要发布的包）。plugin/ 才是插件本体，它有自己的 package.json。",
+  "type": "module",
+  "comment": [
+    "为什么要有这个文件：tools/ 下的构建与验证脚本依赖 esbuild / react / playwright-core，",
+    "而 plugin/package.json 的 dependencies 是空的（插件本身零运行时依赖，这是设计要求）。",
+    "所以构建依赖挂在这个工作区级 manifest 上，而不是污染插件包。",
+    "",
+    "装依赖必须四个一起装 —— 单独装 playwright-core 会把 esbuild/react 删掉（踩过）：",
+    "  npm install --no-save esbuild@0.25.12 react@18.3.1 react-dom@18.3.1 playwright-core@1.49.1 --registry=https://registry.npmmirror.com",
+    "",
+    "版本号刻意钉死：react 必须是 18.3.1（宿主外壳就是这个版本，见 README 技术要点 5）。"
+  ],
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "playwright-core": "1.49.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}

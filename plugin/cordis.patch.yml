@@ -1,0 +1,10 @@
+# dsh-agents-bot — DSH bundle patch
+#
+# 把插件的 Host 半侧挂进当前 profile 的配置树；Web 半侧由 dsh.client 声明，
+# 宿主按 package.json 的 dsh.client 自动组装 bundle，这里不用写。
+#
+# 安装（本地开发）：
+#   dsh plugin --profile desktop add link:<插件目录>
+- insert:
+    - id: dsh-agents-bot
+      name: dsh-agents-bot

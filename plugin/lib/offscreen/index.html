@@ -1,0 +1,22 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'"><title>隔离活动头像</title><style>
+html,body,#root{margin:0;min-height:100%;background:var(--bot-canvas,#f6f8fb)}
+.isolation{padding:8px;color:var(--bot-label-color,#171717);font:13px system-ui,sans-serif;box-sizing:border-box;min-height:100vh}
+.warning{background:#7b1515;color:#fff;padding:16px;border-radius:8px;font-weight:700}
+.grid{display:grid;gap:6px;height:calc(100vh - 16px);min-height:0;overflow:hidden}
+article{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;box-sizing:border-box;min-width:0;min-height:0;padding:6px 4px;border:1px solid color-mix(in srgb,var(--bot-label-color,#171717) 20%,var(--bot-canvas,#f6f8fb));border-radius:8px;background:var(--bot-canvas,#f6f8fb);overflow:hidden}
+.isolation-bot{display:flex;align-items:center;justify-content:center;flex:0 1 auto;min-height:0;width:100%;margin-bottom:12px;overflow:hidden}
+.grid[data-count="9"] .isolation-bot{margin-bottom:3px}
+.isolation-bot>svg{min-width:0;min-height:0;max-width:100%;max-height:100%}
+.isolation-title{font-weight:600;flex:0 0 18px;width:calc(100% - 8px);max-width:100%;font-size:12.5px;line-height:18px;letter-spacing:.01em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0}
+.isolation-pill{box-sizing:border-box;width:min(82px,calc(100% - 8px));height:16px;flex:0 0 16px;display:inline-flex;align-items:center;justify-content:center;gap:2px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 3px;border:1px solid color-mix(in srgb,var(--bot-label-color,#171717) 35%,var(--bot-canvas,#f6f8fb));border-radius:999px;background:var(--bot-canvas,#f6f8fb);color:var(--bot-label-color,#171717);font-size:9px;line-height:14px}
+.isolation-status{flex-shrink:0;margin-top:5px}
+.isolation-activity-dot{flex:0 0 6px;width:6px;height:6px;border-radius:50%}
+.isolation-activity-dot[data-breathing="true"]{animation:status-lamp-breathe 2.4s ease-in-out infinite}
+@keyframes status-lamp-breathe{0%,100%{opacity:1}50%{opacity:.38}}
+@media (prefers-reduced-motion:reduce){.isolation-activity-dot[data-breathing="true"]{animation:none}}
+article[data-raised="true"] .isolation-title,article[data-raised="true"] .isolation-status,article[data-raised="true"] .isolation-count-slot{transform:translateY(-32px)}
+article[data-spacious="true"] .isolation-title,article[data-spacious="true"] .isolation-status,article[data-spacious="true"] .isolation-count-slot{transform:translateY(-40px)}
+.isolation-count-slot{flex:0 0 16px;width:100%;height:16px;display:flex;align-items:center;justify-content:center}
+.isolation-children{flex:0 0 auto}
+.isolation-children svg{flex:0 0 12px;width:12px;height:12px;max-width:12px;max-height:12px}
+</style></head><body><div id="root"></div><script src="./owner.js" defer></script><script src="./app.js" defer></script></body></html>
