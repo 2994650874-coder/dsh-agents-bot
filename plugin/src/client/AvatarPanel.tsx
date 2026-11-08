@@ -55,6 +55,7 @@ import {
   monitoredList,
   orientationOf,
   presetPositionFor,
+  syncPresetSlots,
   visitMonitored,
   patchUi,
   removePicked,
@@ -173,6 +174,12 @@ function AvatarPanelBody({ useSessions, useSessionStatus, useWorkspaces, mode, p
   useLayoutEffect(() => visitMonitored(activeId, unavailable), [activeId, unavailable])
 
   /**
+   * 整帧先认领一次自动顺位：已认领的 id 保留原顺位，新 id 挑未被占用的格位，
+   * 避免两个会话撞进同一套外观。纯内存，不写 localStorage、不进隔离子页协议。
+   */
+  const presetSlots = useMemo(() => syncPresetSlots(shownIds), [shownIds])
+
+  /**
    * agent 行。活动由 `derive` 统一推导 —— 它把「会话在跑」「工具名」
    * 「出错」「压缩」「后台任务」这些信号按优先级折成一个活动。
    *
@@ -209,8 +216,8 @@ function AvatarPanelBody({ useSessions, useSessionStatus, useWorkspaces, mode, p
    */
   const lookFor = useCallback(
     (id: string): AvatarLook =>
-      looks[id] ?? presetLookAt(presetPositionFor(id, shownIds.indexOf(id)), look, preset),
-    [looks, look, shownIds, preset]
+      looks[id] ?? presetLookAt(presetSlots.get(id) ?? presetPositionFor(id, shownIds.indexOf(id)), look, preset),
+    [looks, look, shownIds, presetSlots, preset]
   )
 
   /**

@@ -815,6 +815,55 @@ export function presetPositionFor(sessionId: string, firstPosition: number): num
   return position
 }
 
+/**
+ * 按「这一帧实际显示的队列」同步自动顺位认领，避免两个不同会话撞进同一格顺位。
+ *
+ * ── 为什么需要 ──────────────────────────────────────────────────────
+ * `presetPositionFor` 只保证「同一个 id 稳定」，不保证「不同 id 不同」：
+ * 队列重排时两个会话若先后以同一个格位首次露面，会被认领到同一行顺位，
+ * 于是两格取到同一套外观，容易看错。这里在整帧渲染前统一认领一次。
+ *
+ * ── 规则 ────────────────────────────────────────────────────────────
+ *  1. 已经认领过的 id 保留原顺位（换格不换脸，既有行为不变）。
+ *  2. 新 id 优先坐自己当前的格位；若该格位已被别人占，顺延到最近的空位。
+ *  3. 已离开画面的 id 释放其格位，避免去重表只增不减。
+ *  4. 全程只动模块级内存 Map，不写 localStorage、不触碰隔离协议。
+ *
+ * 只保证「自动顺位不撞」；用户手动把两行设成一样、或顺位表短于格子数时
+ * 从头循环重复，仍按设置页既定口径保留（那是用户的自由）。
+ *
+ * 返回这一帧的认领表快照，供渲染期读；同时写回模块级 Map，供
+ * `presetPositionFor` 等既有读取点保持一致。
+ */
+export function syncPresetSlots(shownIds: readonly string[]): Map<string, number> {
+  // 空队列多来自「当前会话暂未识别」这类瞬时状态（子页会被卸载），不是所有
+  // 会话真的离开了。此时保留认领表，恢复后外观不重排。
+  if (shownIds.length === 0) return new Map(automaticPresetSlots)
+  const kept = new Map<string, number>()
+  for (const [id, position] of automaticPresetSlots) {
+    if (shownIds.includes(id)) kept.set(id, position)
+  }
+  automaticPresetSlots.clear()
+  const taken = new Set<number>()
+  // 先安置已经认领过的：保留原顺位（换格不换脸），但若两个旧 id 撞了同一格，
+  // 只留一个，另一个落到下一轮重新分配 —— 这就是去重。
+  for (const id of shownIds) {
+    const known = kept.get(id)
+    if (known !== undefined && !taken.has(known)) {
+      automaticPresetSlots.set(id, known)
+      taken.add(known)
+    }
+  }
+  for (const id of shownIds) {
+    if (automaticPresetSlots.has(id)) continue
+    let position = Math.max(0, shownIds.indexOf(id))
+    while (taken.has(position)) position += 1
+    automaticPresetSlots.set(id, position)
+    taken.add(position)
+  }
+  return new Map(automaticPresetSlots)
+}
+
 function currentMonitorQueue(): QueueState {
   return monitorQueue ?? seedMonitorQueue(state.picked, activeMonitorId, MAX_MONITORED)
 }
