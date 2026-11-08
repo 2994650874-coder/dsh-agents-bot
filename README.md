@@ -12,6 +12,16 @@
 
 两种模式共用同一套数据（监视队列、活动推导、外观配置）与同一套引擎，不各维护一份状态。
 
+### 截图
+
+> 1 / 4 / 9 格为**离线引擎渲染的静态帧示意**（每格取不同的身形、配色与活动状态，用来展示「各格长不一样」这一常态）；主窗口模式图为离线测试的合成预览。均非真机聊天界面截图。
+
+| 1 格 | 4 格 | 9 格 |
+|---|---|---|
+| ![1 格监视](docs/screenshots/monitor-1.png) | ![4 格监视](docs/screenshots/monitor-4.png) | ![9 格监视](docs/screenshots/monitor-9.png) |
+
+**主窗口模式（DSH 界面模式）**：![主窗口双 Bot](docs/screenshots/main-window-mode.png)
+
 ---
 
 ## 特色
@@ -73,11 +83,13 @@
 
 本项目的**动画引擎**基于 [bloub](https://github.com/jeremy-prt/bloub)（Jérémy Perret，MIT）：`plugin/src/bot/` 由 bloub 的 `src/bot/` 原样引入，其 MIT 许可原文保留在 [`plugin/LICENSE-bloub-MIT.txt`](plugin/LICENSE-bloub-MIT.txt)。bloub 的 MIT 只覆盖其代码，不覆盖它模仿的设计。
 
-[grok-icon-study](https://github.com/wcccheryl/grok-icon-study) 仅作为**状态命名语义的参考**（reading → thinking → typing 的响应生命周期），**未使用其任何代码**（该仓库未给开源许可、注明仅供学习参考）。本仓库不含其文件。
+本项目**没有复制** [grok-icon-study](https://github.com/wcccheryl/grok-icon-study) 的源代码文件，本仓库不含其文件。但开发过程中**曾参考**其 `animation.html`：借鉴了状态命名语义（reading → thinking → typing 的响应生命周期），并从中转换了 6 个身形的几何轮廓数据（盾牌 / 穹顶 / 拱门 / 圆柱 / 宝石 / 晶体，见 `plugin/src/client/look.ts` 与 `plugin/src/bot/skins.ts`）、参照过其动画参数。
+
+该仓库**未给开源许可**，注明「仅供学习参考，请勿商用或再分发」，角色、商标、几何数据归 xAI / 相应权利人所有。上述几何数据属于参考转换结果，不是其原始代码；如需商用，请自行评估授权。
 
 **本仓库其余代码按 MIT 授权**，见 [LICENSE](LICENSE)。
 
-> 这不是「两个上游仓库合并」：bloub 是引擎本体，grok-icon-study 只贡献词汇表。
+> 这不是「两个上游仓库合并」：bloub 是引擎本体，grok-icon-study 是设计与语义参考，零行代码被复制。
 
 ---
 
